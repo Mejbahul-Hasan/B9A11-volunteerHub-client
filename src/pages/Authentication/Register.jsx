@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -12,6 +12,7 @@ const Register = () => {
 
     const { createUser, updateUserProfile, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleRegister = async e => {
         e.preventDefault();

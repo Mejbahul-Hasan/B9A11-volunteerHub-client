@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const AddVolunteerPost = () => {
 
@@ -28,14 +29,20 @@ const AddVolunteerPost = () => {
         try {
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/addPosts`, addVolunteer)
             console.log(data)
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Your post added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
         } catch (err) {
             console.log(err)
             console.log("Hi, i am error", err.message)
         }
     }
-
     
-
     return (
         <div className="bg-gray-200 rounded-2xl mt-8 text-center max-w-6xl mx-auto">
             <h1 className="text-3xl py-5">Please fill-up the following form:</h1>
@@ -93,7 +100,7 @@ const AddVolunteerPost = () => {
                         <div className="label">
                             <span className="label-text font-bold">Deadline</span>
                         </div>
-                        <DatePicker className="border py-3 rounded-xl px-32" selected={startDate} onChange={(date) => setStartDate(date)} />
+                        <DatePicker className="border py-3 rounded-xl px-32" selected={startDate} onChange={(date) => setStartDate(date)} dateFormat="dd/mm/yyyy" />
                     </label>
                 </div>
                 <label className="form-control w-full gap-2 m-5">
