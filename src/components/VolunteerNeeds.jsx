@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const VolunteerNeeds = ({ services }) => {
     return (
@@ -14,7 +15,9 @@ const VolunteerNeeds = ({ services }) => {
                                 </h2>
                                 <p>{service.PostTitle}</p>
                                 <div className="">
-                                    <button className="btn w-full btn-sm">View Details</button>
+                                    <Link to={'/need-volunteer'}>
+                                        <button className="btn btn-outline w-full btn-sm">View Details</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -22,7 +25,9 @@ const VolunteerNeeds = ({ services }) => {
                 }
             </div>
             <div className="text-center my-8">
-                <button className="btn btn-wide">See All</button>
+                <Link to={'/need-volunteer'}>
+                    <button className="btn btn-wide btn-outline">See All</button>
+                </Link>
             </div>
         </>
     );
