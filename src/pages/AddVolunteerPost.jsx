@@ -4,11 +4,14 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { useNavigate } from "react-router-dom";
+import { Bounce } from "react-awesome-reveal";
 
 const AddVolunteerPost = () => {
 
     const { user } = useContext(AuthContext);
     const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate();
 
     const handleFormSubmission = async e => {
         e.preventDefault()
@@ -22,12 +25,12 @@ const AddVolunteerPost = () => {
         const deadline = startDate;
         const organizerName = user?.displayName;
         const organizerEmail = user?.email;
-        const addVolunteer = { thumbnail, postTitle, description, category, location, volunteerNumber, deadline, organizerName, organizerEmail}
+        const addVolunteer = { thumbnail, postTitle, description, category, location, volunteerNumber, deadline, organizerName, organizerEmail }
         form.reset();
         console.log(addVolunteer);
 
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/addPosts`, addVolunteer)
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addPosts`, addVolunteer)
             console.log(data)
             if (data.insertedId) {
                 Swal.fire({
@@ -37,81 +40,89 @@ const AddVolunteerPost = () => {
                     confirmButtonText: 'Cool'
                 })
             }
+            navigate('/my-volunteer-post')
         } catch (err) {
             console.log(err)
             console.log("Hi, i am error", err.message)
         }
     }
-    
+
     return (
-        <div className="bg-gray-200 rounded-2xl mt-8 text-center max-w-6xl mx-auto">
-            <h1 className="text-3xl py-5">Please fill-up the following form:</h1>
-            <form onSubmit={handleFormSubmission}>
-                <div className="lg:flex gap-5">
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Organizer Name</span>
-                        </div>
-                        <input type="text" name="organizerName" defaultValue={user?.displayName} placeholder="" className="input input-bordered max-w-md" />
-                    </label>
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Organizer Email</span>
-                        </div>
-                        <input type="text" name="organizerEmail" defaultValue={user?.email} placeholder="" className="input input-bordered max-w-md" />
-                    </label>
-                </div>
-                <div className="lg:flex gap-5">
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Post Title</span>
-                        </div>
-                        <input type="text" name="title" placeholder="Title of volunteer service" className="input input-bordered max-w-md" />
-                    </label>
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Post Description</span>
-                        </div>
-                        <input type="text" name="description" placeholder="Description of your service" className="input input-bordered max-w-md" />
-                    </label>
-                </div>
-                <div className="lg:flex gap-5">
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Location</span>
-                        </div>
-                        <input type="text" name="location" placeholder="Address of the service place" className="input input-bordered max-w-md" />
-                    </label>
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">Category</span>
-                        </div>
-                        <input type="text" name="category" placeholder="Healthcare/Education/Social Service/Animal Welfare" className="input input-bordered max-w-md" />
-                    </label>
-                </div>
-                <div className="lg:flex gap-5">
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2">
-                        <div className="label">
-                            <span className="label-text font-bold">No. of Volunteers Needed</span>
-                        </div>
-                        <input type="text" name="volunteerNumber" placeholder="Number of Volunteers Needed to Accomplish the service" className="input input-bordered max-w-md" />
-                    </label>
-                    <label className="form-control w-full gap-2 m-5 md:w-1/2 items-start">
-                        <div className="label">
-                            <span className="label-text font-bold">Deadline</span>
-                        </div>
-                        <DatePicker className="border py-3 rounded-xl px-32" selected={startDate} onChange={(date) => setStartDate(date)}/>
-                    </label>
-                </div>
-                <label className="form-control w-full gap-2 m-5">
-                    <div className="label">
-                        <span className="label-text font-bold">Thumbnail</span>
+        <>
+            <div className="text-center font-bold text-3xl my-5 bg-purple-100 h-20 rounded-xl py-5">
+                <Bounce>
+                    <h1>Add Your Volunteer Required Post</h1>
+                </Bounce>
+            </div>
+            <div className="bg-gray-200 rounded-2xl mt-8 text-center max-w-6xl mx-auto">
+                <h1 className="text-3xl py-5">Please fill-up the following form:</h1>
+                <form onSubmit={handleFormSubmission}>
+                    <div className="lg:flex gap-5">
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Organizer Name</span>
+                            </div>
+                            <input type="text" name="organizerName" defaultValue={user?.displayName} placeholder="" className="input input-bordered max-w-md" />
+                        </label>
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Organizer Email</span>
+                            </div>
+                            <input type="text" name="organizerEmail" defaultValue={user?.email} placeholder="" className="input input-bordered max-w-md" />
+                        </label>
                     </div>
-                    <input type="text" name="thumbnail" placeholder="Thumbnail/image URL" className="input input-bordered max-w-md lg:max-w-5xl" />
-                </label>
-                <button className="btn btn-outline w-1/2 my-5">Add Post</button>
-            </form>
-        </div>
+                    <div className="lg:flex gap-5">
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Post Title</span>
+                            </div>
+                            <input type="text" name="title" placeholder="Title of volunteer service" className="input input-bordered max-w-md" />
+                        </label>
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Post Description</span>
+                            </div>
+                            <input type="text" name="description" placeholder="Description of your service" className="input input-bordered max-w-md" />
+                        </label>
+                    </div>
+                    <div className="lg:flex gap-5">
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Location</span>
+                            </div>
+                            <input type="text" name="location" placeholder="Address of the service place" className="input input-bordered max-w-md" />
+                        </label>
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">Category</span>
+                            </div>
+                            <input type="text" name="category" placeholder="Healthcare/Education/Social Service/Animal Welfare" className="input input-bordered max-w-md" />
+                        </label>
+                    </div>
+                    <div className="lg:flex gap-5">
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2">
+                            <div className="label">
+                                <span className="label-text font-bold">No. of Volunteers Needed</span>
+                            </div>
+                            <input type="text" name="volunteerNumber" placeholder="Number of Volunteers Needed to Accomplish the service" className="input input-bordered max-w-md" />
+                        </label>
+                        <label className="form-control w-full gap-2 m-5 md:w-1/2 items-start">
+                            <div className="label">
+                                <span className="label-text font-bold">Deadline</span>
+                            </div>
+                            <DatePicker className="border py-3 rounded-xl px-32" selected={startDate} onChange={(date) => setStartDate(date)} />
+                        </label>
+                    </div>
+                    <label className="form-control w-full gap-2 m-5">
+                        <div className="label">
+                            <span className="label-text font-bold">Thumbnail</span>
+                        </div>
+                        <input type="text" name="thumbnail" placeholder="Thumbnail/image URL" className="input input-bordered max-w-md lg:max-w-5xl" />
+                    </label>
+                    <button className="btn btn-outline w-1/2 my-5">Add Post</button>
+                </form>
+            </div>
+        </>
     );
 };
 

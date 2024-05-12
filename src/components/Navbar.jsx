@@ -81,7 +81,7 @@ const Navbar = () => {
                                     <Link to="/my-volunteer-post">Manage My Post</Link>
                                 </li>
                                 <li>
-                                    <Link>My Volunteer Requested Post</Link>
+                                    <Link to="/my-volunteer-request">My Volunteer Requested Post</Link>
                                 </li>
                             </ul>
                         </div>

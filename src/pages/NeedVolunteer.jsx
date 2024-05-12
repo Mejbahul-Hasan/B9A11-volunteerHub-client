@@ -1,11 +1,22 @@
 import { Link, useLoaderData } from "react-router-dom";
+import { useTypewriter, Cursor } from 'react-simple-typewriter'
 
 const NeedVolunteer = () => {
 
     const allPosts = useLoaderData();
 
+    const [text] = useTypewriter({
+        words: ['Volunteer Needs Now', 'Be Philanthropic'],
+        loop: 10,
+        onLoopDone: () => console.log(`loop completed after 3 runs.`)
+    })
+
     return (
         <>
+            <div className="bg-purple-100 h-20 rounded-xl text-center py-5 mt-7">
+                <span className="text-2xl font-bold">{text}</span>
+                <Cursor cursorColor='red' />
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                 {
                     allPosts.map(post => (

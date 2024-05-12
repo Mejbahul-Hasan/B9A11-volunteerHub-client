@@ -49,7 +49,7 @@ const UpdatePost = () => {
 
     return (
         <div className="bg-gray-200 rounded-2xl mt-8 text-center max-w-6xl mx-auto">
-            <h1 className="text-3xl py-5">Please fill-up the following form:</h1>
+            <h1 className="text-3xl py-5">Please update your required field:</h1>
             <form onSubmit={handleUpdate}>
                 <div className="lg:flex gap-5">
                     <label className="form-control w-full gap-2 m-5 md:w-1/2">
