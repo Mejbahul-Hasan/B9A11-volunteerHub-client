@@ -2,14 +2,16 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import ReactDatePicker from "react-datepicker";
+import toast from "react-hot-toast";
 
 const UpdatePost = () => {
     const { user } = useContext(AuthContext);
     const existingPost = useLoaderData();
-    const { thumbnail, postTitle, description, category, location, volunteerNumber, deadline } = existingPost || {};
+    const { _id, thumbnail, postTitle, description, category, location, volunteerNumber, deadline } = existingPost || {};
     const [startDate, setStartDate] = useState(new Date(deadline) || new Date());
+    const navigate = useNavigate();
 
     const handleUpdate = async e => {
         e.preventDefault();
@@ -28,19 +30,20 @@ const UpdatePost = () => {
         console.log(updatePost);
 
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/addPosts`, updatePost)
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/addPosts/${_id}`, updatePost)
             console.log(data)
-            if (data.insertedId) {
+            if (data.modifiedCount > 0) {
                 Swal.fire({
                     title: 'Success!',
                     text: 'Your post updated successfully',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
+                navigate("/my-volunteer-post")
             }
         } catch (err) {
             console.log(err)
-            console.log("Hi, i am error", err.message)
+            toast.error(err.message)
         }
     }
 
