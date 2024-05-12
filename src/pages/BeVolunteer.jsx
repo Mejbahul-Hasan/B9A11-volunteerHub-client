@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import toast from 'react-hot-toast';
 
 const BeVolunteer = () => {
     const { user } = useContext(AuthContext);
@@ -11,6 +12,9 @@ const BeVolunteer = () => {
     const { thumbnail, postTitle, description, category, location, volunteerNumber, deadline, organizerName, organizerEmail } = volunteerInfo || {}
 
     const handleRequest = async e => {
+        // if(user?.email === organizerEmail) 
+        //     return toast.error('Action not permitted!');
+
         e.preventDefault()
         const form = e.target;
         const thumbnail = volunteerInfo.thumbnail;

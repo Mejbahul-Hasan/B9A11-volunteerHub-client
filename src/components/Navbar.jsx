@@ -78,10 +78,10 @@ const Navbar = () => {
                                     <Link to="/add-volunteer" className='justify-between'>Add Volunteer Post</Link>
                                 </li>
                                 <li>
-                                    <div>Manage My Post</div>
+                                    <Link to="/my-volunteer-post">Manage My Post</Link>
                                 </li>
                                 <li>
-                                    <div>My Volunteer Requested Post</div>
+                                    <Link>My Volunteer Requested Post</Link>
                                 </li>
                             </ul>
                         </div>
