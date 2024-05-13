@@ -12,7 +12,7 @@ const MyVolunteerPost = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/addPosts-email/${user?.email}`);
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/addPosts-email/${user?.email}`, {withCredentials: true});
             setMyPosts(data)
         }
         getData()

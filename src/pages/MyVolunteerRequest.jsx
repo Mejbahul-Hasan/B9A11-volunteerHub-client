@@ -11,7 +11,7 @@ const MyVolunteerRequest = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/beVolunteer-email/${user?.email}`);
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/beVolunteer-email/${user?.email}`, {withCredentials: true});
             setMyRequests(data)
         }
         getData()
