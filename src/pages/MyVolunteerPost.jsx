@@ -74,7 +74,7 @@ const MyVolunteerPost = () => {
                             <th>Thumbnail</th>
                             <th>Post Title</th>
                             <th>Category</th>
-                            <th>Location</th>
+                            <th>Deadline</th>
                             <th>Volunteers Needed (No.)</th>
 
                         </tr>
@@ -94,7 +94,7 @@ const MyVolunteerPost = () => {
                                 </td>
                                 <td>{post?.postTitle}</td>
                                 <td>{post?.category}</td>
-                                <td>{post?.location}</td>
+                                <td>{new Date(post?.deadline).toLocaleDateString()}</td>
                                 <td>{post?.volunteerNumber}</td>
                                 <th>
                                     <Link to={`/update/${post._id}`}><button className="btn btn-xs btn-outline btn-info">Update</button></Link>

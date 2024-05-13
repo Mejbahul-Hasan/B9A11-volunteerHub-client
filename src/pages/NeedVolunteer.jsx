@@ -6,7 +6,7 @@ const NeedVolunteer = () => {
     const allPosts = useLoaderData();
 
     const [text] = useTypewriter({
-        words: ['Volunteer Needs Now', 'Be Philanthropic'],
+        words: ['Be Philanthropic', 'Volunteers Required'],
         loop: 10,
         onLoopDone: () => console.log(`loop completed after 3 runs.`)
     })

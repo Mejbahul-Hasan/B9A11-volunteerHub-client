@@ -4,16 +4,23 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import Swal from 'sweetalert2'
-import toast from 'react-hot-toast';
+import { useTypewriter, Cursor } from 'react-simple-typewriter'
+
 
 const BeVolunteer = () => {
     const { user } = useContext(AuthContext);
     const volunteerInfo = useLoaderData();
     const { thumbnail, postTitle, description, category, location, volunteerNumber, deadline, organizerName, organizerEmail } = volunteerInfo || {}
 
+    const [text] = useTypewriter({
+        words: ['Interested to Become Volunteer', 'Pls fill-up the form'],
+        loop: 10,
+        onLoopDone: () => console.log(`loop completed after 3 runs.`)
+    })
+
     const handleRequest = async e => {
         // if(user?.email === organizerEmail) 
-        //     return toast.error('Action not permitted!');
+        //     alert('Action not permitted!');
 
         e.preventDefault()
         const form = e.target;
@@ -36,7 +43,7 @@ const BeVolunteer = () => {
         console.log(beVolunteer);
 
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/beVolunteer`, beVolunteer)
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/beVolunteer`, beVolunteer)
             console.log(data)
             if (data.insertedId) {
                 Swal.fire({
@@ -54,6 +61,10 @@ const BeVolunteer = () => {
 
     return (
         <>
+            <div className="bg-purple-100 h-20 rounded-xl text-center py-5 my-7">
+                <span className="text-2xl font-bold">{text}</span>
+                <Cursor cursorColor='red' />
+            </div>
             <div className="hero bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
 

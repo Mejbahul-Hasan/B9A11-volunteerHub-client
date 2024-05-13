@@ -3,6 +3,8 @@ import { AuthContext } from "../provider/AuthProvider"
 import { Link } from "react-router-dom"
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { MdVolunteerActivism } from "react-icons/md";
+
 
 const Navbar = () => {
     const [theme, setTheme] = useState('light')
@@ -37,7 +39,7 @@ const Navbar = () => {
                 <div className='flex-1'>
                     <Link to="/" className='flex gap-2 items-center'>
                         <img className='w-auto h-7' src='' alt='' />
-                        <div className='font-bold'>VolunteerHub</div>
+                        <div className='font-bold'><MdVolunteerActivism />VolunteerHub</div>
                     </Link>
                 </div>
                 <div className='flex-none'>

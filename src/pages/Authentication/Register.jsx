@@ -45,6 +45,7 @@ const Register = () => {
             const result = await createUser(email, password)
             console.log(result)
             await updateUserProfile(name, photo)
+            // optimistic UI Update
             setUser({ ...user, photoURL: photo, displayName: name })
             navigate(location.state ? location.state : '/')
             toast.success("Registration Successful !")

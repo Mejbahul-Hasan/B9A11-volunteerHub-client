@@ -52,7 +52,7 @@ const MyVolunteerRequest = () => {
         <>
             <div className="text-center font-bold text-xl my-5">
                 <Bounce>
-                    <h1>My Posted Volunteer Services Available: {myRequests.length}</h1>
+                    <h1>My Requested Volunteer Services Available: {myRequests.length}</h1>
                 </Bounce>
             </div>
             <div className="overflow-x-auto">
