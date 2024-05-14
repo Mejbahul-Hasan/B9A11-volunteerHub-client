@@ -17,6 +17,9 @@ const MyVolunteerRequest = () => {
         getData()
     }, [user, control]);
 
+    // if (myRequests.length == 0) Swal.fire("You have not posted any request!");
+
+
     const handleDelete = (id) => {
         // console.log(id);
         Swal.fire({

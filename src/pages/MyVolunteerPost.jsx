@@ -3,7 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { Bounce } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 const MyVolunteerPost = () => {
     const { user } = useContext(AuthContext);
@@ -12,11 +12,13 @@ const MyVolunteerPost = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/addPosts-email/${user?.email}`, {withCredentials: true});
+            const { data } = await axios(`${import.meta.env.VITE_API_URL}/addPosts-email/${user?.email}`, { withCredentials: true });
             setMyPosts(data)
         }
         getData()
     }, [user, control]);
+
+    // if (myPosts.length == 0) Swal.fire("You have not posted any data!");
 
     const handleDelete = (id) => {
         // console.log(id);
@@ -59,56 +61,58 @@ const MyVolunteerPost = () => {
     //     console.log(err.message)
     // }
 
-    return (
-        <>
-            <div className="text-center font-bold text-xl my-5">
-                <Bounce>
-                    <h1>My Posted Volunteer Services Available: {myPosts.length}</h1>
-                </Bounce>
-            </div>
-            <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>Thumbnail</th>
-                            <th>Post Title</th>
-                            <th>Category</th>
-                            <th>Deadline</th>
-                            <th>Volunteers Needed (No.)</th>
+    
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        {
-                            myPosts.map(post => <tr key={post._id}>
-                                <td>
-                                    <div className="flex items-center gap-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={post?.thumbnail} alt="Avatar Tailwind CSS Component" />
+        return (
+            <>
+                <div className="text-center font-bold text-xl my-5">
+                    <Bounce>
+                        <h1>My Posted Volunteer Services Available: {myPosts.length}</h1>
+                    </Bounce>
+                </div>
+                <div className="overflow-x-auto">
+                    <table className="table">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th>Thumbnail</th>
+                                <th>Post Title</th>
+                                <th>Category</th>
+                                <th>Deadline</th>
+                                <th>Volunteers Needed (No.)</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            {
+                                myPosts.map(post => <tr key={post._id}>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={post?.thumbnail} alt="Avatar Tailwind CSS Component" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>{post?.postTitle}</td>
-                                <td>{post?.category}</td>
-                                <td>{new Date(post?.deadline).toLocaleDateString()}</td>
-                                <td>{post?.volunteerNumber}</td>
-                                <th>
-                                    <Link to={`/update/${post._id}`}><button className="btn btn-xs btn-outline btn-info">Update</button></Link>
-                                </th>
-                                <th>
-                                    <button onClick={() => handleDelete(post._id)} className="btn btn-xs btn-outline btn-warning">Delete</button>
-                                </th>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </>
-    );
+                                    </td>
+                                    <td>{post?.postTitle}</td>
+                                    <td>{post?.category}</td>
+                                    <td>{new Date(post?.deadline).toLocaleDateString()}</td>
+                                    <td>{post?.volunteerNumber}</td>
+                                    <th>
+                                        <Link to={`/update/${post._id}`}><button className="btn btn-xs btn-outline btn-info">Update</button></Link>
+                                    </th>
+                                    <th>
+                                        <button onClick={() => handleDelete(post._id)} className="btn btn-xs btn-outline btn-warning">Delete</button>
+                                    </th>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </>
+        );
 };
 
 export default MyVolunteerPost;

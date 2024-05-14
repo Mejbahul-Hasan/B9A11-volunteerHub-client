@@ -60,6 +60,7 @@ const AuthProvider = ({ children }) => {
                 .then(res=>{
                     console.log('token response', res.data);
                 })
+                
             }
             else{
                 axios.post(`${import.meta.env.VITE_API_URL}/logOut`, loggedUser, {
