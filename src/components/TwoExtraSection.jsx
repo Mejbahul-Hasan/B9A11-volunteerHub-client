@@ -7,28 +7,28 @@ const TwoExtraSection = () => {
                 <div className="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" defaultChecked />
                     <div className="collapse-title text-xl font-medium">
-                        Exploring Color Theory:
+                    Start Your Volunteering Journey Today
                     </div>
                     <div className="collapse-content">
-                        <p>Here, you could delve into the principles of color theory, discussing concepts like the color wheel, complementary colors, warm and cool tones, and how to create harmony or contrast in your artwork through color choices.</p>
+                        <p>Ready to make a difference? Browse our volunteer opportunities, sign up for projects that resonate with you, and start your journey towards positive change. Our Volunteer Management Website is here to support you every step of the way, ensuring your volunteering experience is rewarding and impactful. Join us and be the change you wish to see in the world.</p>
                     </div>
                 </div>
                 <div className="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" />
                     <div className="collapse-title text-xl font-medium">
-                        Expressive Techniques and Finding Your Style
+                    Easy and Secure Volunteer Management
                     </div>
                     <div className="collapse-content">
-                        <p>Finally, this accordion text could focus on encouraging artistic expression and finding one's unique style. It might include exercises for exploring different artistic genres, experimenting with abstraction, and developing a personal voice through your artwork.</p>
+                        <p>For organizations, our website offers a comprehensive solution for managing volunteer programs. From recruitment to recognition, our tools simplify every aspect of volunteer management. Store volunteer information securely, streamline communication, and generate detailed reports to measure impact and improve your programs.</p>
                     </div>
                 </div>
                 <div className="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" />
                     <div className="collapse-title text-xl font-medium">
-                        Experimenting with Mixed Media:
+                    Join a Community of Changemakers
                     </div>
                     <div className="collapse-content">
-                        <p>Mixed media techniques combine various art materials to create unique textures and effects. This text could explore mixing paints with collage elements, incorporating ink, pastels, or even digital elements into traditional artwork, and how to layer different mediums for depth and complexity.
+                        <p>Volunteering is not just about giving; it's about being part of a community. Our website fosters communication and collaboration among volunteers and coordinators. Engage with fellow volunteers, share your experiences, and stay updated with the latest news and events. Together, we can achieve more.
                         </p>
                     </div>
                 </div>
@@ -40,9 +40,9 @@ const TwoExtraSection = () => {
                     <div className="stat-figure text-secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
-                    <div className="stat-title">Downloads</div>
+                    <div className="stat-title">Views</div>
                     <div className="stat-value">31K</div>
-                    <div className="stat-desc">Jan 1st - Feb 1st</div>
+                    <div className="stat-desc">Mar 1st - April 1st</div>
                 </div>
 
                 <div className="stat">

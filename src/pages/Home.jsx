@@ -7,7 +7,7 @@ import TwoExtraSection from "../components/TwoExtraSection";
 
 const Home = () => {
     const services = useLoaderData();
-    console.log(services);
+    // console.log(services);
 
     const [text_1] = useTypewriter({
         words: ['Volunteer Needs Now', 'Section!'],

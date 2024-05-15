@@ -23,7 +23,7 @@ const Navbar = () => {
             setTheme('light')
         }
     }
-    console.log(theme);
+    // console.log(theme);
 
     const { user, logOut } = useContext(AuthContext);
 
